@@ -39,15 +39,19 @@
     "require": {
         "php": "^7.3 || ~8.0.0 || ~8.1.0",
         "composer/package-versions-deprecated": "^1.10.99",
+        "filp/whoops": "^2.14",
         "laminas/laminas-component-installer": "^2.5.0",
         "laminas/laminas-config-aggregator": "^1.5.0",
         "laminas/laminas-diactoros": "^2.6.0",
+        "laminas/laminas-servicemanager": "^3.4",
         "laminas/laminas-stdlib": "^3.3.1",
         "laminas/laminas-zendframework-bridge": "^1.2.0",
         "mezzio/mezzio": "^3.5.0",
+        "mezzio/mezzio-fastroute": "^3.0.3",
         "mezzio/mezzio-helpers": "^5.6.0",
-        "laminas/laminas-servicemanager": "^3.4",
-        "mezzio/mezzio-fastroute": "^3.0.3"
+        "mezzio/mezzio-laminasviewrenderer": "^2.3",
+        "ramsey/uuid-doctrine": "^1.8",
+        "roave/psr-container-doctrine": "^3.1"
     },
     "require-dev": {
         "laminas/laminas-development-mode": "^3.3.0",
