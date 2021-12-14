@@ -20,8 +20,7 @@ use Doctrine\Migrations\Tools\Console\Command\SyncMetadataCommand;
 use Doctrine\Migrations\Tools\Console\Command\UpToDateCommand;
 use Doctrine\Migrations\Tools\Console\Command\VersionCommand;
 use Doctrine\ORM\EntityManager;
-//use Doctrine\ORM\Mapping\Driver\XmlDriver;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Doctrine\ORM\Mapping\Driver\XmlDriver;
 use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Roave\PsrContainerDoctrine\CacheFactory;
@@ -113,39 +112,24 @@ class ConfigProvider
                     ],
                 ],
             ],
-            // 'driver' => [
-            //     'stratum_doctrine_xml' => [
-            //         'class' => XmlDriver::class,
-            //         'paths' => [
-            //             dirname(__DIR__) . '/../../data/orm',
-            //         ],
-            //     ],
-            //     'orm_default' => [
-            //         'class'   => MappingDriverChain::class,
-            //         'drivers' => [
-            //             __NAMESPACE__ . '\Entity' => 'stratum_doctrine_xml',
-            //         ],
-            //     ],
-            // ],
             'driver' => [
                 __NAMESPACE__ . '_driver' => [
-                    'class' => AnnotationDriver::class,
-                    'cache' => 'array',
+                    'class' => XmlDriver::class,
                     'paths' => [
-                        dirname(__DIR__) . '/src/Entity',
-                    ]
+                        dirname(__DIR__) . '/data/orm',
+                    ],
                 ],
                 'orm_default' => [
                     'class'   => MappingDriverChain::class,
                     'drivers' => [
                         __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'migrations' => [
                 'orm_default' => [
                     'table_storage' => [
-                        'table_name' => 'stratum_migrations',
+                        'table_name' => 'migrations',
                     ],
                     'migrations_paths'        => [],
                     'all_or_nothing'          => true,
