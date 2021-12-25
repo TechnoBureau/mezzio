@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TechnoBureau\User\Entity\OauthAuthCodes" table="oauth_auth_codes" repository-class="TechnoBureau\User\Repository\OauthAuthCodesRepository">
+    <indexes>
+      <index name="idx_bb493f8319eb6921" columns="client_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="oauth_auth_codes_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="isrevoked" type="boolean" column="isrevoked" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="expiresdatetime" type="datetime_immutable" column="expiresdatetime" nullable="true"/>
+    <many-to-one field="client" target-entity="TechnoBureau\User\Entity\OauthClients" fetch="LAZY">
+      <join-columns>
+        <join-column name="client_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="scope" target-entity="TechnoBureau\User\Entity\OauthScopes" inversed-by="authCode" fetch="LAZY">
+      <join-table name="oauth_auth_code_scopes">
+        <join-columns>
+          <join-column name="auth_code_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="scope_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

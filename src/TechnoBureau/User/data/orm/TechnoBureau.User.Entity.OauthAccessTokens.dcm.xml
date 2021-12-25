@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TechnoBureau\User\Entity\OauthAccessTokens" table="oauth_access_tokens"  repository-class="TechnoBureau\User\Repository\OauthAccessTokenRepository">
+    <indexes>
+      <index name="idx_ca42527c19eb6921" columns="client_id"/>
+      <index name="idx_ca42527ca76ed395" columns="user_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="oauth_access_tokens_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="token" type="string" column="token" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="isrevoked" type="boolean" column="isrevoked" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="expiresdatetime" type="datetime_immutable" column="expiresdatetime" nullable="false"/>
+    <many-to-one field="client" target-entity="TechnoBureau\User\Entity\OauthClients" fetch="LAZY">
+      <join-columns>
+        <join-column name="client_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="TechnoBureau\User\Entity\AuthUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="scope" target-entity="TechnoBureau\User\Entity\OauthScopes" inversed-by="accessToken" fetch="LAZY">
+      <join-table name="oauth_access_token_scopes">
+        <join-columns>
+          <join-column name="access_token_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="scope_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

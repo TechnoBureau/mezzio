@@ -7,6 +7,7 @@ return [
             'orm_default' => [
                 'auto_generate_proxy_classes' => false,
                 'proxy_dir'                   => 'data/proxies',
+                'sql_logger' => 'my_sql_logger',
                 //'naming_strategy'             => UnderscoreNamingStrategy::class,
             ],
         ],

@@ -1,11 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace TechnoBureau\User\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Mezzio\Authentication\UserInterface as MezzioUserInterface;
+use League\OAuth2\Server\Entities\UserEntityInterface as OAuth2UserInterface;
 
 /**
  * AuthUser
  */
-class AuthUser
+class AuthUser implements MezzioUserInterface, OAuth2UserInterface
 {
     /**
      * @var string|null
@@ -62,6 +67,16 @@ class AuthUser
      */
     private $id;
 
+    private array $roles = [];
+
+    private array $details = [];
+
+    public function __construct()
+    {
+        $this->id = 0;
+        $this->email = '';
+        $this->password = '';
+    }
 
     /**
      * Set password.
@@ -311,5 +326,58 @@ class AuthUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id.
+     *
+     * @return AuthUser
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getIdentifier(): string
+    {
+        return $this->getEmail();
+    }
+
+    public function getIdentity(): string
+    {
+        return $this->getEmail();
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    public function getDetail(string $name, $default = null)
+    {
+        return $this->details[$name] ?? $default;
+    }
+
+    public function setDetails(array $details): self
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    /** @psalm-suppress MixedReturnTypeCoercion */
+    public function getDetails(): array
+    {
+        /** @psalm-suppress MixedReturnTypeCoercion */
+        return $this->details;
     }
 }

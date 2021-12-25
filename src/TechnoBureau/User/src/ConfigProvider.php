@@ -12,6 +12,10 @@ use Roave\PsrContainerDoctrine\EntityManagerFactory;
 use Doctrine\ORM\EntityManager;
 
 use Mezzio\Application;
+use Mezzio\Authentication;
+
+use Mezzio\Authentication\OAuth2;
+use Mezzio\Session\SessionMiddleware;
 
 /**
  * The configuration provider for the App module
@@ -43,6 +47,7 @@ class ConfigProvider
         return [
             'aliases' => [
                 EntityManager::class => 'doctrine.entity_manager.orm_default',
+                //Authentication\AuthenticationInterface::class => Authentication\OAuth2\OAuth2Adapter::class,
             ],
             'invokables' => [
             ],
@@ -110,6 +115,36 @@ class ConfigProvider
     public function registerRoutes(Application $app, string $basePath = '/user'): void
     {
         $app->get($basePath . '[/]', Handler\UserHandler::class, 'user');
+        $app->route(
+            '/oauth2/login',
+            [
+                SessionMiddleware::class,
+                \TechnoBureau\User\Handler\LoginHandler::class,
+            ],
+            ['GET', 'POST'],
+            'login'
+        );
+       // $app->post('/oauth2/token', OAuth2\TokenEndpointHandler::class);
+        $app->route('/oauth2/token', [
+            SessionMiddleware::class,
+           //\User\Middleware\LoginHandler::class,
+
+            OAuth2\AuthorizationMiddleware::class,
+
+            TechnoBureau\User\Middleware\OAuthAuthorizationMiddleware::class,
+
+            OAuth2\AuthorizationHandler::class
+        ], ['GET', 'POST']);
+        $app->route('/oauth2/authorize', [
+            SessionMiddleware::class,
+           //\User\Middleware\LoginHandler::class,
+
+            OAuth2\AuthorizationMiddleware::class,
+
+            \TechnoBureau\User\Middleware\OAuthAuthorizationMiddleware::class,
+
+            OAuth2\AuthorizationHandler::class
+        ], ['GET', 'POST']);
 
     }
 }

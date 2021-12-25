@@ -14,6 +14,10 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
+
+    \Mezzio\Session\Ext\ConfigProvider::class,
+    \Mezzio\Authentication\OAuth2\ConfigProvider::class,
+    \Mezzio\Authentication\ConfigProvider::class,
     \Mezzio\LaminasView\ConfigProvider::class,
     \Mezzio\Helper\ConfigProvider::class,
     \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
@@ -23,6 +27,7 @@ $aggregator = new ConfigAggregator([
     ConfigProvider::class,
     \Mezzio\ConfigProvider::class,
     \Mezzio\Router\ConfigProvider::class,
+    \Mezzio\Session\ConfigProvider::class,
     \Laminas\Diactoros\ConfigProvider::class,
     // Swoole config to overwrite some services (if installed)
     class_exists(\Mezzio\Swoole\ConfigProvider::class)
