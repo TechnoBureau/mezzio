@@ -4,3 +4,7 @@
 /coveralls-upload.json
 /phpunit.xml
 /vendor/
+node_modules/
+package-lock.json
+mix-manifest.json
+**/*.LICENSE.txt
