@@ -25,7 +25,7 @@ $this->inlineScript()
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="<?=$this->url('home')?>">TechnoBureau</a>
+        <a class="navbar-brand ps-3" href="<?=$this->url('home.view')?>">TechnoBureau</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,8 +40,38 @@ $this->inlineScript()
                 </button>
         </div>
         </form>
-        <a href="<?=$this->url('login')?>" class="btn btn-primary" role="button">Login</a>&nbsp;
-        <a  href="<?=$this->url('login')?>" class="btn btn-primary" role="button">Register</a>&nbsp;
+        <?php if ($this->getRole() !== 'guest') : ?>
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><label class="dropdown-item"> Ganapathi Chidambaram </label></li>
+                        <li><hr class="dropdown-divider"></hr></li>
+                        <li><a class="dropdown-item" href="<?=$this->url('home.view')?>">Home</a></li>
+                        <?php if ($this->isGranted('admin.view')) : ?>
+                            <li class="nav-item">
+                                <a class="dropdown-item" href="<?=$this->url('admin.view')?>" >
+                                    Admin
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <li><hr class="dropdown-divider"></hr></li>
+                        <li><a class="dropdown-item" href="<?=$this->url('logout.access')?>" >
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        <?php else : ?>
+            <a href="<?=$this->url('login.form')?>" class="btn btn-primary" role="button">Login</a>&nbsp;
+            <a  href="<?=$this->url('login.form')?>" class="btn btn-primary" role="button">Register</a>&nbsp;
+        <?php endif; ?>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -126,7 +156,9 @@ $this->inlineScript()
                 </div>
 
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <div class="small">Logged in as:
+
+                    </div>
 
                 </div>
 
@@ -134,6 +166,20 @@ $this->inlineScript()
         </div>
 
         <div id="layoutSidenav_content">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </symbol>
+        </svg>
+            <?php if ($flashes = $this->flash()) :?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                    <?php foreach($flashes as $message) : ?>
+                        <strong><?php echo $message; ?></strong>
+                    <?php endforeach; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
             <main class="h-100">
                 <div class="container-fluid px-4" id="breadcrumb-container">
                     <nav class="row pt-4" aria-label="breadcrumb">

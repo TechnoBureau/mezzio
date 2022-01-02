@@ -16,6 +16,9 @@ use Mezzio\Router\Middleware\RouteMiddleware;
 use Psr\Container\ContainerInterface;
 use Mezzio\Session\SessionMiddleware;
 
+use TechnoBureau\User\Middleware\UserMiddleware;
+use Mezzio\Flash\FlashMessageMiddleware;
+
 /**
  * Setup middleware pipeline:
  */
@@ -27,6 +30,7 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
 
 
     $app->pipe(ServerUrlMiddleware::class);
+
 
     // Pipe more middleware here that you want to execute on every request:
     // - bootstrapping
@@ -49,9 +53,10 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // Register the routing middleware in the middleware pipeline.
     // This middleware registers the Mezzio\Router\RouteResult request attribute.
     //Globally apply session middleware to all route
-    //$app->pipe(SessionMiddleware::class);
+    $app->pipe(SessionMiddleware::class);
+    $app->pipe(FlashMessageMiddleware::class);
     $app->pipe(RouteMiddleware::class);
-
+    //$app->pipe(\Mezzio\ProblemDetails\ProblemDetailsNotFoundHandler::class);
     // The following handle routing failures for common conditions:
     // - HEAD request but no routes answer that method
     // - OPTIONS request but no routes answer that method
@@ -71,13 +76,15 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // - route-based authentication
     // - route-based validation
     // - etc.
-
+    $app->pipe(UserMiddleware::class);
     // Register the dispatch middleware in the middleware pipeline
     $app->pipe(DispatchMiddleware::class);
 
     // At this point, if no Response is returned by any middleware, the
     // NotFoundHandler kicks in; alternately, you can provide other fallback
     // middleware to execute.
+   // $app->pipe(\Mezzio\ProblemDetails\ProblemDetailsNotFoundHandler::class);
     $app->pipe(NotFoundHandler::class);
+    //$app->pipe(\Mezzio\ProblemDetails\ProblemDetailsNotFoundHandler::class);
 
 };

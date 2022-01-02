@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function get_class;
 
-class UserHandlerFactory
+class HomePageHandlerFactory
 {
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
@@ -20,6 +20,6 @@ class UserHandlerFactory
             ? $container->get(TemplateRendererInterface::class)
             : null;
 
-        return new UserHandler(get_class($container), $router, $template);
+        return new HomePageHandler(get_class($container), $router, $template);
     }
 }

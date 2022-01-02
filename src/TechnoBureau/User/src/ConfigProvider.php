@@ -16,7 +16,25 @@ use Mezzio\Authentication;
 
 use Mezzio\Authentication\OAuth2;
 use Mezzio\Session\SessionMiddleware;
+use Mezzio\Csrf\CsrfMiddleware;
 
+use TechnoBureau\User\Handler\HomePageHandler;
+use TechnoBureau\User\Handler\HomePageHandlerFactory;
+use TechnoBureau\User\Handler\AdminPageHandler;
+use TechnoBureau\User\Handler\AdminPageHandlerFactory;
+use TechnoBureau\User\Handler\LoginPageHandler;
+use TechnoBureau\User\Handler\LoginPageHandlerFactory;
+use TechnoBureau\User\Handler\LogoutHandler;
+use TechnoBureau\User\Handler\PingHandler;
+use TechnoBureau\User\Middleware\PrgMiddleware;
+use TechnoBureau\User\Middleware\UserMiddleware;
+use TechnoBureau\User\Middleware\UserMiddlewareFactory;
+use TechnoBureau\User\View\Helper\Flash;
+use TechnoBureau\User\View\Helper\GetRole;
+use TechnoBureau\User\View\Helper\IsGrantedFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Mezzio\Authentication\AuthenticationMiddleware;
+use Mezzio\Authorization\AuthorizationMiddleware;
 /**
  * The configuration provider for the App module
  *
@@ -36,6 +54,15 @@ class ConfigProvider
             'dependencies' => $this->getDependencies(),
             'doctrine'     => $this->doctrine(),
             'templates'    => $this->getTemplates(),
+            'view_helpers' => [
+                'invokables' => [
+                    'flash'   => Flash::class,
+                    'getRole' => GetRole::class,
+                ],
+                'factories'  => [
+                    'isGranted' => IsGrantedFactory::class,
+                ],
+            ],
         ];
     }
 
@@ -47,14 +74,28 @@ class ConfigProvider
         return [
             'aliases' => [
                 EntityManager::class => 'doctrine.entity_manager.orm_default',
-                //Authentication\AuthenticationInterface::class => Authentication\OAuth2\OAuth2Adapter::class,
+                // UserRepositoryInterface::class => Repository\AuthUserRepository::class,
+                // AccessTokenRepositoryInterface::class => Repository\OauthAccessTokenRepository::class,
+                // AuthCodeRepositoryInterface::class => Repository\OauthAuthCodesRepository::class,
+                // ClientRepositoryInterface::class => Repository\OauthClientsRepository::class,
+                // RefreshTokenRepositoryInterface::class => Repository\OauthRefreshTokensRepository::class,
+                // ScopeRepositoryInterface::class => Repository\OauthScopesRepository::class,
+                // UserRepositoryInterface::class => Repository\AuthUserRepository::class,
+                // //AuthenticationInterface1::class => OAuth2Adapter2::class,
+                // Authentication\AuthenticationInterface::class => Authentication\OAuth2\OAuth2Adapter::class,
             ],
             'invokables' => [
+                LogoutHandler::class => LogoutHandler::class,
             ],
             'factories' => [
-                Handler\UserHandler::class => Handler\UserHandlerFactory::class,
+                //Handler\UserHandler::class => Handler\UserHandlerFactory::class,
+                HomePageHandler::class => HomePageHandlerFactory::class,
                 'doctrine.driver.orm_default'         => DriverFactory::class,
                 'doctrine.entity_manager.orm_default' => EntityManagerFactory::class,
+                AdminPageHandler::class => AdminPageHandlerFactory::class,
+                LoginPageHandler::class => LoginPageHandlerFactory::class,
+                PrgMiddleware::class    => InvokableFactory::class,
+                UserMiddleware::class   => UserMiddlewareFactory::class,
             ],
         ];
     }
@@ -108,43 +149,41 @@ class ConfigProvider
     {
         return [
             'paths' => [
-                'user' => [__DIR__ . '/templates/user'],
+                'user' => [__DIR__ . '/../templates/user'],
             ],
         ];
     }
     public function registerRoutes(Application $app, string $basePath = '/user'): void
     {
-        $app->get($basePath . '[/]', Handler\UserHandler::class, 'user');
-        $app->route(
-            '/oauth2/login',
-            [
-                SessionMiddleware::class,
-                \TechnoBureau\User\Handler\LoginHandler::class,
-            ],
-            ['GET', 'POST'],
-            'login'
-        );
-       // $app->post('/oauth2/token', OAuth2\TokenEndpointHandler::class);
-        $app->route('/oauth2/token', [
-            SessionMiddleware::class,
-           //\User\Middleware\LoginHandler::class,
+        $app->get('/', [
+            AuthenticationMiddleware::class,
+            AuthorizationMiddleware::class,
+            HomePageHandler::class,
+        ], 'home.view');
 
-            OAuth2\AuthorizationMiddleware::class,
+        $app->route('/admin', [
+            AuthenticationMiddleware::class,
+            AuthorizationMiddleware::class,
+            AdminPageHandler::class,
+        ], ['GET'], 'admin.view');
 
-            TechnoBureau\User\Middleware\OAuthAuthorizationMiddleware::class,
+        $app->route('/login', [
+            AuthorizationMiddleware::class,
+            //csrf handling
+            CsrfMiddleware::class,
+            // prg handling
+            PrgMiddleware::class,
+            // the login page
+            LoginPageHandler::class,
+            // authentication handling
+            AuthenticationMiddleware::class,
+        ], ['GET', 'POST'], 'login.form');
 
-            OAuth2\AuthorizationHandler::class
-        ], ['GET', 'POST']);
-        $app->route('/oauth2/authorize', [
-            SessionMiddleware::class,
-           //\User\Middleware\LoginHandler::class,
 
-            OAuth2\AuthorizationMiddleware::class,
-
-            \TechnoBureau\User\Middleware\OAuthAuthorizationMiddleware::class,
-
-            OAuth2\AuthorizationHandler::class
-        ], ['GET', 'POST']);
-
+        $app->get('/logout', [
+            AuthenticationMiddleware::class,
+            AuthorizationMiddleware::class,
+            LogoutHandler::class,
+        ], 'logout.access');
     }
 }
