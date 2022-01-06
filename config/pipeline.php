@@ -16,7 +16,7 @@ use Mezzio\Router\Middleware\RouteMiddleware;
 use Psr\Container\ContainerInterface;
 use Mezzio\Session\SessionMiddleware;
 
-use TechnoBureau\User\Middleware\UserMiddleware;
+use TechnoBureau\mezzioPDOAuth\Middleware\UserMiddleware;
 use Mezzio\Flash\FlashMessageMiddleware;
 
 /**

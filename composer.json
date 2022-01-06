@@ -75,7 +75,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App/src/",
-            "TechnoBureau\\User\\": "src/TechnoBureau/User/src/"
+            "TechnoBureau\\mezzioPDOAuth\\": "src/TechnoBureau/mezzioPDOAuth/src/"
         }
     },
     "autoload-dev": {

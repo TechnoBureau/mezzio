@@ -39,5 +39,5 @@ use Psr\Container\ContainerInterface;
 
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/api/ping', App\Handler\PingHandler::class, 'api.ping');
-    (new TechnoBureau\User\ConfigProvider())->registerRoutes($app, '/user');
+    (new TechnoBureau\mezzioPDOAuth\ConfigProvider())->registerRoutes($app, '/user');
 };
