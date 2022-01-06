@@ -58,6 +58,7 @@ class ConfigProvider
             'doctrine'     => $this->doctrine(),
             'templates'    => $this->getTemplates(),
             'authentication' => $this->getPDOAuthentication(),
+            'mezzio-authorization-acl'   => $this->getACL(),
             'view_helpers' => [
                 'invokables' => [
                     'flash'   => Flash::class,
@@ -160,6 +161,11 @@ class ConfigProvider
             'remember-me-seconds' => 604800,
         ];
     }
+    public function getACL(): array
+    {
+        return include __DIR__ . '/../config/authorization-acl.global.php';
+    }
+
     public function registerRoutes(Application $app, string $basePath = '/user'): void
     {
         $app->get('/', [
