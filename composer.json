@@ -62,11 +62,12 @@
         "mezzio/mezzio-session": "^1.6",
         "mezzio/mezzio-session-ext": "^1.12",
         "ramsey/uuid-doctrine": "^1.8",
-        "roave/psr-container-doctrine": "^3.1"
+        "roave/psr-container-doctrine": "^3.1",
+        "technobureau/mezzio-pdo-auth":"dev-main"
     },
     "require-dev": {
         "laminas/laminas-development-mode": "^3.3.0",
-        "mezzio/mezzio-tooling": "^1.4.0",
+        "mezzio/mezzio-tooling": "^2.4.0",
         "phpspec/prophecy": "^1.10.3",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.4.1",
@@ -74,8 +75,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/src/",
-            "TechnoBureau\\mezzioPDOAuth\\": "src/TechnoBureau/mezzioPDOAuth/src/"
+            "App\\": "src/App/src/"
+
         }
     },
     "autoload-dev": {
