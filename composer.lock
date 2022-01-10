@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1231a60ee6e5f14482f9a31d2ffe7202",
+    "content-hash": "a40a8a101a54b1ac317fa8af50fb2c7a",
     "packages": [
         {
             "name": "brick/math",
@@ -279,78 +279,6 @@
                 "source": "https://github.com/dflydev/dflydev-fig-cookies/tree/v3.0.0"
             },
             "time": "2021-01-22T02:53:56+00:00"
-        },
-        {
-            "name": "doctrine/annotations",
-            "version": "1.13.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/annotations.git",
-                "reference": "5b668aef16090008790395c02c893b1ba13f7e08"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5b668aef16090008790395c02c893b1ba13f7e08",
-                "reference": "5b668aef16090008790395c02c893b1ba13f7e08",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/lexer": "1.*",
-                "ext-tokenizer": "*",
-                "php": "^7.1 || ^8.0",
-                "psr/cache": "^1 || ^2 || ^3"
-            },
-            "require-dev": {
-                "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^6.0 || ^8.1",
-                "phpstan/phpstan": "^0.12.20",
-                "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5",
-                "symfony/cache": "^4.4 || ^5.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Docblock Annotations Parser",
-            "homepage": "https://www.doctrine-project.org/projects/annotations.html",
-            "keywords": [
-                "annotations",
-                "docblock",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.13.2"
-            },
-            "time": "2021-08-05T19:00:23+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -1305,38 +1233,39 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "2.2.3",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "5e7bdbbfe9811c06e1f745d1c166647d5c47d6ee"
+                "reference": "f8af155c1e7963f3d2b4415097d55757bbaa53d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/5e7bdbbfe9811c06e1f745d1c166647d5c47d6ee",
-                "reference": "5e7bdbbfe9811c06e1f745d1c166647d5c47d6ee",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/f8af155c1e7963f3d2b4415097d55757bbaa53d8",
+                "reference": "f8af155c1e7963f3d2b4415097d55757bbaa53d8",
                 "shasum": ""
             },
             "require": {
-                "doctrine/annotations": "^1.0",
                 "doctrine/cache": "^1.11 || ^2.0",
                 "doctrine/collections": "^1.0",
                 "doctrine/deprecations": "^0.5.3",
                 "doctrine/event-manager": "^1.0",
                 "php": "^7.1 || ^8.0",
-                "psr/cache": "^1.0|^2.0|^3.0"
+                "psr/cache": "^1.0 || ^2.0 || ^3.0"
             },
             "conflict": {
+                "doctrine/annotations": "<1.0 || >=2.0",
                 "doctrine/common": "<2.10@dev"
             },
             "require-dev": {
                 "composer/package-versions-deprecated": "^1.11",
+                "doctrine/annotations": "^1.0",
                 "doctrine/coding-standard": "^6.0 || ^9.0",
                 "doctrine/common": "^3.0",
-                "phpstan/phpstan": "0.12.84",
+                "phpstan/phpstan": "1.2.0",
                 "phpunit/phpunit": "^7.5.20 || ^8.0 || ^9.0",
-                "symfony/cache": "^4.4|^5.0",
-                "vimeo/psalm": "4.7.0"
+                "symfony/cache": "^4.4 || ^5.0 || ^6.0",
+                "vimeo/psalm": "4.13.1"
             },
             "type": "library",
             "autoload": {
@@ -1386,9 +1315,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/2.2.3"
+                "source": "https://github.com/doctrine/persistence/tree/2.3.0"
             },
-            "time": "2021-10-25T19:59:10+00:00"
+            "time": "2022-01-09T19:58:46+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -2810,16 +2739,16 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.6.4",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "830a36d93aeaf06e540e90ec031babb3c6eafadb"
+                "reference": "cba75fad2053bb5dc8d3e7f5e62b61d75eecfaf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/830a36d93aeaf06e540e90ec031babb3c6eafadb",
-                "reference": "830a36d93aeaf06e540e90ec031babb3c6eafadb",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/cba75fad2053bb5dc8d3e7f5e62b61d75eecfaf1",
+                "reference": "cba75fad2053bb5dc8d3e7f5e62b61d75eecfaf1",
                 "shasum": ""
             },
             "require": {
@@ -2830,8 +2759,8 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.3.0",
-                "phpbench/phpbench": "^0.17.1",
-                "phpunit/phpunit": "~9.3.7",
+                "phpbench/phpbench": "^1.0",
+                "phpunit/phpunit": "^9.3.7",
                 "psalm/plugin-phpunit": "^0.16.0",
                 "vimeo/psalm": "^4.7"
             },
@@ -2865,7 +2794,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-12-29T14:33:01+00:00"
+            "time": "2022-01-10T11:18:55+00:00"
         },
         {
             "name": "laminas/laminas-stratigility",
@@ -3040,52 +2969,51 @@
         },
         {
             "name": "laminas/laminas-view",
-            "version": "2.16.0",
+            "version": "2.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-view.git",
-                "reference": "cc803ea899e6ca35670b3f21f0b74e93053f2c86"
+                "reference": "196589217721163f950f8c5d6ae5a25337e78216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-view/zipball/cc803ea899e6ca35670b3f21f0b74e93053f2c86",
-                "reference": "cc803ea899e6ca35670b3f21f0b74e93053f2c86",
+                "url": "https://api.github.com/repos/laminas/laminas-view/zipball/196589217721163f950f8c5d6ae5a25337e78216",
+                "reference": "196589217721163f950f8c5d6ae5a25337e78216",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "laminas/laminas-eventmanager": "^3.4",
-                "laminas/laminas-json": "^2.6.1 || ^3.3",
+                "laminas/laminas-json": "^3.3",
                 "laminas/laminas-stdlib": "^3.6",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "php": "^7.4 || ~8.0.0 || ~8.1.0"
             },
             "conflict": {
                 "container-interop/container-interop": "<1.2",
                 "laminas/laminas-router": "<3.0.1",
                 "laminas/laminas-servicemanager": "<3.3",
+                "laminas/laminas-session": "<2.12",
                 "zendframework/zend-view": "*"
             },
             "require-dev": {
                 "ext-dom": "*",
                 "laminas/laminas-authentication": "^2.5",
-                "laminas/laminas-cache": "^2.6.1",
-                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-coding-standard": "~2.3.0",
                 "laminas/laminas-console": "^2.6",
                 "laminas/laminas-escaper": "^2.5",
                 "laminas/laminas-feed": "^2.15",
-                "laminas/laminas-filter": "^2.6.1",
+                "laminas/laminas-filter": "^2.13.0",
                 "laminas/laminas-http": "^2.15",
                 "laminas/laminas-i18n": "^2.6",
                 "laminas/laminas-modulemanager": "^2.7.1",
                 "laminas/laminas-mvc": "^2.7.14 || ^3.0",
                 "laminas/laminas-mvc-i18n": "^1.1",
-                "laminas/laminas-mvc-plugin-flashmessenger": "^1.2",
-                "laminas/laminas-navigation": "^2.8.1",
-                "laminas/laminas-paginator": "^2.5",
+                "laminas/laminas-mvc-plugin-flashmessenger": "^1.5.0",
+                "laminas/laminas-navigation": "^2.13.1",
+                "laminas/laminas-paginator": "^2.11.0",
                 "laminas/laminas-permissions-acl": "^2.6",
                 "laminas/laminas-router": "^3.0.1",
                 "laminas/laminas-servicemanager": "^3.4",
-                "laminas/laminas-session": "^2.12",
                 "laminas/laminas-uri": "^2.5",
                 "phpspec/prophecy": "^1.12",
                 "phpspec/prophecy-phpunit": "^2.0",
@@ -3141,7 +3069,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-12-30T12:32:07+00:00"
+            "time": "2022-01-09T21:12:26+00:00"
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
@@ -3316,21 +3244,21 @@
         },
         {
             "name": "mezzio/mezzio-authentication",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-authentication.git",
-                "reference": "97302a13b86aac2f4c54a41ee7c30e53e1f956e0"
+                "reference": "ff62fa71b95b4e3816fc8668f002fb11b7f61dd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-authentication/zipball/97302a13b86aac2f4c54a41ee7c30e53e1f956e0",
-                "reference": "97302a13b86aac2f4c54a41ee7c30e53e1f956e0",
+                "url": "https://api.github.com/repos/mezzio/mezzio-authentication/zipball/ff62fa71b95b4e3816fc8668f002fb11b7f61dd0",
+                "reference": "ff62fa71b95b4e3816fc8668f002fb11b7f61dd0",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/http-message": "^1.0.1",
                 "psr/http-server-middleware": "^1.0",
                 "webmozart/assert": "^1.9"
@@ -3343,10 +3271,10 @@
                 "ext-sqlite3": "*",
                 "laminas/laminas-coding-standard": "~2.3.0",
                 "phpspec/prophecy": "^1.14",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.5",
+                "phpspec/prophecy-phpunit": "^v2.0.1",
+                "phpunit/phpunit": "^9.5.11",
                 "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.10"
+                "vimeo/psalm": "^4.17.0"
             },
             "suggest": {
                 "ext-pdo": "*: for use with the PDO-backed UserRepositoryInterface implementation",
@@ -3394,35 +3322,35 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-12-02T16:48:39+00:00"
+            "time": "2022-01-07T18:51:08+00:00"
         },
         {
             "name": "mezzio/mezzio-authentication-session",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-authentication-session.git",
-                "reference": "0a6f2418571eec6564c9d8d5e0d21c84871035c8"
+                "reference": "a87d92c424432ea6abd06033d77e86f1e477031d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-authentication-session/zipball/0a6f2418571eec6564c9d8d5e0d21c84871035c8",
-                "reference": "0a6f2418571eec6564c9d8d5e0d21c84871035c8",
+                "url": "https://api.github.com/repos/mezzio/mezzio-authentication-session/zipball/a87d92c424432ea6abd06033d77e86f1e477031d",
+                "reference": "a87d92c424432ea6abd06033d77e86f1e477031d",
                 "shasum": ""
             },
             "require": {
-                "mezzio/mezzio-authentication": "^1.0",
-                "mezzio/mezzio-session": "^1.0",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0",
+                "mezzio/mezzio-authentication": "^1.3",
+                "mezzio/mezzio-session": "^1.6",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/http-message": "^1.0.1"
             },
             "conflict": {
                 "zendframework/zend-expressive-authentication-session": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.2.0",
-                "phpunit/phpunit": "^9.3"
+                "laminas/laminas-coding-standard": "~2.3.0",
+                "phpunit/phpunit": "^9.5.11"
             },
             "type": "library",
             "extra": {
@@ -3461,26 +3389,26 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-14T04:02:34+00:00"
+            "time": "2022-01-07T18:49:22+00:00"
         },
         {
             "name": "mezzio/mezzio-authorization",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-authorization.git",
-                "reference": "1e4aadabec5985e5f1a620fbd01822265389e31f"
+                "reference": "1e371e8c6eebea44de0a7e9045971ed259361d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-authorization/zipball/1e4aadabec5985e5f1a620fbd01822265389e31f",
-                "reference": "1e4aadabec5985e5f1a620fbd01822265389e31f",
+                "url": "https://api.github.com/repos/mezzio/mezzio-authorization/zipball/1e371e8c6eebea44de0a7e9045971ed259361d1f",
+                "reference": "1e371e8c6eebea44de0a7e9045971ed259361d1f",
                 "shasum": ""
             },
             "require": {
-                "mezzio/mezzio-authentication": "^1.0",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0",
+                "mezzio/mezzio-authentication": "^1.3",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/http-message": "^1.0.1",
                 "psr/http-server-middleware": "^1.0"
             },
@@ -3489,10 +3417,10 @@
                 "zendframework/zend-expressive-authorization": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.2.0",
-                "phpspec/prophecy": "^1.12",
+                "laminas/laminas-coding-standard": "~2.3.0",
+                "phpspec/prophecy": "^v1.15.0",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.3"
+                "phpunit/phpunit": "^9.5.11"
             },
             "suggest": {
                 "mezzio/mezzio-authorization-acl": "^1.0; provides a laminas-permissions-acl-backed adapter",
@@ -3537,28 +3465,28 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-14T04:07:15+00:00"
+            "time": "2022-01-07T08:35:00+00:00"
         },
         {
             "name": "mezzio/mezzio-authorization-acl",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-authorization-acl.git",
-                "reference": "9549a8b2d067453552af8785700c36097301bf69"
+                "reference": "fe89400ef9598ec5d4e9d61b0c2a2269fe3e0dc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-authorization-acl/zipball/9549a8b2d067453552af8785700c36097301bf69",
-                "reference": "9549a8b2d067453552af8785700c36097301bf69",
+                "url": "https://api.github.com/repos/mezzio/mezzio-authorization-acl/zipball/fe89400ef9598ec5d4e9d61b0c2a2269fe3e0dc7",
+                "reference": "fe89400ef9598ec5d4e9d61b0c2a2269fe3e0dc7",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-permissions-acl": "^2.6",
-                "mezzio/mezzio-authorization": "^1.0",
-                "mezzio/mezzio-router": "^3.0",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0",
+                "laminas/laminas-permissions-acl": "^2.9",
+                "mezzio/mezzio-authorization": "^1.2",
+                "mezzio/mezzio-router": "^3.8",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/http-message": "^1.0.1"
             },
             "conflict": {
@@ -3567,11 +3495,11 @@
                 "zendframework/zend-expressive-authorization-acl": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.2.0",
-                "laminas/laminas-servicemanager": "^3.3",
-                "phpspec/prophecy": "^1.12",
+                "laminas/laminas-coding-standard": "~2.3.0",
+                "laminas/laminas-servicemanager": "^3.10",
+                "phpspec/prophecy": "^1.15",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.3"
+                "phpunit/phpunit": "^9.5.11"
             },
             "type": "library",
             "extra": {
@@ -3612,26 +3540,26 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-14T22:02:33+00:00"
+            "time": "2022-01-07T18:47:16+00:00"
         },
         {
             "name": "mezzio/mezzio-csrf",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-csrf.git",
-                "reference": "e88e7f8764bca0d06062c9ffe1074f0d457f2f9d"
+                "reference": "ccf644cc5fa3c1f270d7cf41f489c454c0651ceb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-csrf/zipball/e88e7f8764bca0d06062c9ffe1074f0d457f2f9d",
-                "reference": "e88e7f8764bca0d06062c9ffe1074f0d457f2f9d",
+                "url": "https://api.github.com/repos/mezzio/mezzio-csrf/zipball/ccf644cc5fa3c1f270d7cf41f489c454c0651ceb",
+                "reference": "ccf644cc5fa3c1f270d7cf41f489c454c0651ceb",
                 "shasum": ""
             },
             "require": {
                 "mezzio/mezzio-session": "^1.0",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0|^2.0",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "conflict": {
@@ -3639,9 +3567,9 @@
                 "zendframework/zend-expressive-csrf": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.2.0",
-                "mezzio/mezzio-flash": "^1.0",
-                "phpunit/phpunit": "^9.3"
+                "laminas/laminas-coding-standard": "~2.3.0",
+                "mezzio/mezzio-flash": "^1.3",
+                "phpunit/phpunit": "^9.5.11"
             },
             "suggest": {
                 "mezzio/mezzio-flash": "^1.0 To back CSRF tokens using flash messages"
@@ -3686,7 +3614,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-16T17:08:09+00:00"
+            "time": "2022-01-07T18:44:35+00:00"
         },
         {
             "name": "mezzio/mezzio-fastroute",
@@ -6224,17 +6152,17 @@
             "time": "2021-12-16T22:13:01+00:00"
         },
         {
-            "name": "technobureau/mezzio-pdo-auth",
+            "name": "technobureau/mezzio-auth",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/TechnoBureau/mezzioPDOAuth.git",
-                "reference": "e2fe7fa410af41c9073758bb3ed1c60ac063e611"
+                "url": "https://github.com/TechnoBureau/mezzioAuth.git",
+                "reference": "99acc31da98d7ea4080804e355ee7fe213ab6ab4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TechnoBureau/mezzioPDOAuth/zipball/e2fe7fa410af41c9073758bb3ed1c60ac063e611",
-                "reference": "e2fe7fa410af41c9073758bb3ed1c60ac063e611",
+                "url": "https://api.github.com/repos/TechnoBureau/mezzioAuth/zipball/99acc31da98d7ea4080804e355ee7fe213ab6ab4",
+                "reference": "99acc31da98d7ea4080804e355ee7fe213ab6ab4",
                 "shasum": ""
             },
             "require": {
@@ -6249,18 +6177,19 @@
                 "roave/psr-container-doctrine": "^3.1"
             },
             "conflict": {
-                "technobureau/mezzio-oauth2": "dev-main"
+                "technobureau/mezzio-oauth2": "dev-main",
+                "technobureau/mezzio-pdo-oauth": "dev-main"
             },
             "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
-                    "config-provider": "TechnoBureau\\mezzioPDOAuth\\ConfigProvider"
+                    "config-provider": "TechnoBureau\\mezzioAuth\\ConfigProvider"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "TechnoBureau\\mezzioPDOAuth\\": "src/"
+                    "TechnoBureau\\mezzioAuth\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6275,20 +6204,21 @@
                     "role": "Developer"
                 }
             ],
-            "description": "PDO Baed Authentication for Mezzio",
-            "homepage": "https://github.com/technobureau/mezziopdoauth",
+            "description": "Doctrine Based Authentication for Mezzio",
+            "homepage": "https://github.com/technobureau/mezzioauth",
             "keywords": [
                 "Authentication",
                 "auth",
-                "mezzio",
-                "pdo",
-                "pdo-auth"
+                "doctrine",
+                "doctrine-auth",
+                "doctrine-auth-mezzio",
+                "mezzio"
             ],
             "support": {
-                "issues": "https://github.com/TechnoBureau/mezzioPDOAuth/issues",
-                "source": "https://github.com/TechnoBureau/mezzioPDOAuth/tree/main"
+                "issues": "https://github.com/TechnoBureau/mezzioAuth/issues",
+                "source": "https://github.com/TechnoBureau/mezzioAuth/tree/main"
             },
-            "time": "2022-01-07T16:50:01+00:00"
+            "time": "2022-01-10T22:09:40+00:00"
         },
         {
             "name": "webimpress/safe-writer",
@@ -7598,12 +7528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "5d1ae7d4b053281a29a24e6e21ede5f9ef245b05"
+                "reference": "11696ae4d8970456cbd1919c17e6bb2ddb63553a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5d1ae7d4b053281a29a24e6e21ede5f9ef245b05",
-                "reference": "5d1ae7d4b053281a29a24e6e21ede5f9ef245b05",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/11696ae4d8970456cbd1919c17e6bb2ddb63553a",
+                "reference": "11696ae4d8970456cbd1919c17e6bb2ddb63553a",
                 "shasum": ""
             },
             "conflict": {
@@ -7628,6 +7558,7 @@
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
                 "bolt/bolt": "<3.7.2",
                 "bolt/core": "<4.1.13",
+                "bottelet/flarepoint": "<2.2.1",
                 "brightlocal/phpwhois": "<=4.2.5",
                 "buddypress/buddypress": "<7.2.1",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
@@ -7876,7 +7807,7 @@
                 "socialiteproviders/steam": "<1.1",
                 "spoonity/tcpdf": "<6.2.22",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
-                "ssddanbrown/bookstack": "<21.11.3",
+                "ssddanbrown/bookstack": "<21.12.1",
                 "stormpath/sdk": ">=0,<9.9.99",
                 "studio-42/elfinder": "<2.1.59",
                 "subrion/cms": "<=4.2.1",
@@ -8030,7 +7961,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-07T00:58:09+00:00"
+            "time": "2022-01-08T00:53:14+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9274,7 +9205,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "technobureau/mezzio-pdo-auth": 20,
+        "technobureau/mezzio-auth": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
