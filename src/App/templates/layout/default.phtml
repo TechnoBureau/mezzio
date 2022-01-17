@@ -36,22 +36,26 @@ $this->inlineScript()
     <?=$this->headMeta()?>
     <?=$this->headLink()?>
   </head>
-  <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <body class="layout-fixed sidebar-horizontal">
   <!-- <body class="hold-transition layout-top-nav" style="height: auto;"> -->
   <!-- <body class="sidebar-mini layout-navbar-fixed"> -->
     <div class="wrapper">
       <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand navbar-light">
+      <nav class="main-header navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-          <!-- <a href="<?=$this->url('home.view')?>" class="navbar-brand">
-            <span class="brand-text font-weight-light">TechnoBureau</span>
-          </a> -->
+          <a href="<?=$this->url('home.view')?>" class="navbar-brand-t">
+          <img src="/img/TechnoBureau-text-mini.png" alt="TechnoBureau Logo" class="brand-imag" style=";opacity: .8">
+
+          </a>
           <!-- Start navbar links -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" data-lte-toggle="sidebar-full" href="#" role="button">
+              <a class="pushmenu nav-link" data-lte-toggle="sidebar-full" href="javascript:;" role="button">
                   <span class="navbar-toggler-icon"></span>
               </a>
+              <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" >
+                <span class="navbar-toggler-icon"></span>
+              </button>
             </li>
             <li class="nav-item d-none d-md-block">
               <a href="<?=$this->url('home.view')?>" class="nav-link">Home</a>
@@ -217,6 +221,23 @@ $this->inlineScript()
       </nav>
       <!-- /.navbar -->
 
+      <!-- Main Sidebar Container -->
+      <aside id="navbar-sidebar" class="main-sidebar sidebar-bg-light  elevation-4 collapse">
+        <!-- <div class="brand-container"> -->
+
+          <!-- <a class="pushmenu mx-" data-lte-toggle="sidebar-mini" href="javascript:;" role="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>
+          </a> -->
+        <!-- </div> -->
+        <!-- Sidebar -->
+        <!-- <div class="sidebar">
+
+        </div> -->
+        <!-- /.sidebar -->
+      </aside>
       <!-- Main content -->
       <div class="content-wrapper">
         <div class="content-header">
@@ -250,26 +271,6 @@ $this->inlineScript()
         </div>
       </div>
       <!-- /.content-wrapper -->
-
-      <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-bg-dark  elevation-4">
-        <div class="brand-container">
-          <a href="<?=$this->url('home.view')?>" class="brand-link">
-            <span class="brand-text fw-light mx-4">TechnoBureau</span>
-          </a>
-          <a class="pushmenu mx-1" data-lte-toggle="sidebar-mini" href="javascript:;" role="button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-            <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-          </svg>
-          </a>
-        </div>
-        <!-- Sidebar -->
-        <div class="sidebar">
-
-        </div>
-        <!-- /.sidebar -->
-      </aside>
 
       <!-- Main Footer -->
       <footer class="main-footer">

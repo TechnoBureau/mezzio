@@ -20,7 +20,7 @@ use Doctrine\Migrations\Tools\Console\Command\SyncMetadataCommand;
 use Doctrine\Migrations\Tools\Console\Command\UpToDateCommand;
 use Doctrine\Migrations\Tools\Console\Command\VersionCommand;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\Driver\XmlDriver;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Roave\PsrContainerDoctrine\CacheFactory;
@@ -112,20 +112,21 @@ class ConfigProvider
                     ],
                 ],
             ],
-            // 'driver' => [
-            //     __NAMESPACE__ . '_driver' => [
-            //         'class' => XmlDriver::class,
-            //         'paths' => [
-            //             dirname(__DIR__) . '/data/orm',
-            //         ],
-            //     ],
-            //     'orm_default' => [
-            //         'class'   => MappingDriverChain::class,
-            //         'drivers' => [
-            //             __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
-            //         ],
-            //     ],
-            // ],
+            'driver' => [
+                __NAMESPACE__ . '_driver' => [
+                    'class' => AttributeDriver::class,
+                    'cache' => 'array',
+                    'paths' => [
+                        dirname(__DIR__) . '/src/Entity',
+                    ],
+                ],
+                'orm_default' => [
+                    'class'   => MappingDriverChain::class,
+                    'drivers' => [
+                        __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
+                    ],
+                ],
+            ],
             'migrations' => [
                 'orm_default' => [
                     'table_storage' => [
