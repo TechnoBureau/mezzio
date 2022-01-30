@@ -36,53 +36,43 @@ $this->inlineScript()
     <?=$this->headMeta()?>
     <?=$this->headLink()?>
   </head>
-  <body class="layout-fixed sidebar-horizontal">
+  <body class="layout-fixed">
   <!-- <body class="hold-transition layout-top-nav" style="height: auto;"> -->
   <!-- <body class="sidebar-mini layout-navbar-fixed"> -->
     <div class="wrapper">
       <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand-md navbar-light">
-        <div class="container">
-          <a href="<?=$this->url('home.view')?>" class="navbar-brand">
-          <img src="/img/TechnoBureau-text-mini.png" alt="Logo" class="brand-imag" style=";opacity: .8">
+      <nav class="main-header navbar navbar-expand navbar-light">
+        <div class="container-fluid">
 
-          </a>
-          <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <!-- Start navbar links -->
-          <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a href="<?=$this->url('home.view')?>" class="nav-link">Home</a>
-              </li>
-              <?php if ($this->isGranted('admin.view')) : ?>
-                  <li class="nav-item">
-                      <a class="nav-link" href="<?=$this->url('admin.view')?>" >
-                          Admin
-                      </a>
-                  </li>
-              <?php endif; ?>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Contact</a>
-              </li>
-            </ul>
-            <form class="form-inline ml-0 ml-md-3">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                      </svg>
-                  </button>
-                </div>
-              </div>
-            </form>
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="pushmenu nav-link" data-lte-toggle="sidebar-full" href="javascript:;" role="button">
+                  <span class="navbar-toggler-icon"></span>
+              </a>
+            </li>
+
+            <li class="nav-item d-none d-md-block">
+              <a href="<?=$this->url('home.view')?>" class="nav-link">Home</a>
+            </li>
+            <?php if ($this->isGranted('admin.view')) : ?>
+                <li class="nav-item d-none d-md-block">
+                    <a class="nav-link" href="<?=$this->url('admin.view')?>" >
+                        Admin
+                    </a>
+                </li>
+            <?php endif; ?>
+            <li class="nav-item d-none d-md-block">
+              <a href="#" class="nav-link">Contact</a>
+            </li>
+
+          </ul>
           <!-- End navbar links -->
-          </div>
-          <ul class="order-3 order-md-3 navbar-nav ms-auto">
-            <?php if ($this->getRole() !== 'guest') : ?>
+
+          <ul class="navbar-nav ms-auto">
+
+          <?php if ($this->getRole() !== 'guest') : ?>
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
               <a class="nav-link" data-bs-toggle="dropdown" href="#">
@@ -208,19 +198,150 @@ $this->inlineScript()
                 </li>
               </ul>
             </li>
-            <?php else : ?>
-              <li class="nav-item">
-                <a href="<?=$this->url('login.form')?>" class=" nav-link" role="button">Login</a>
-              </li>
-           <?php endif; ?>
+
+          <?php endif; ?>
           </ul>
         </div>
       </nav>
       <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside id="navbar-sidebar" class="main-sidebar sidebar-bg-light  elevation-4 collaps">
+        <div class="brand-container">
+        <a href="<?=$this->url('home.view')?>" class="brand-link">
+          <img src="/img/TechnoBureau-text-mini.png" alt="TechnoBureau Logo" class="brand-imag" style=";opacity: .8">
+        </a>
+
+        </div>
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <!-- Sidebar Menu -->
+            <ul class="nav nav-pills nav-sidebar flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+              <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                  <circle cx="8" cy="8" r="8"/>
+                </svg>
+                  <p>Level 1</p>
+
+            </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                  <circle cx="8" cy="8" r="8"/>
+                </svg>
+                  <p>
+                    Level 1
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="end bi bi-chevron-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                      <circle cx="8" cy="8" r="8"/>
+                    </svg>
+                      <p>Level 2</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                      <circle cx="8" cy="8" r="8"/>
+                    </svg>
+                      <p>
+                        Level 2
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="end bi bi-chevron-left" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="javascript:;" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        </svg>
+                          <p>Level 3</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="javascript:;" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        </svg>
+                          <p>Level 3</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="javascript:;" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        </svg>
+                          <p>Level 3</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                      <circle cx="8" cy="8" r="8"/>
+                    </svg>
+                      <p>Level 2</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                      <circle cx="8" cy="8" r="8"/>
+                    </svg>
+                  <p>Level 1</p>
+                </a>
+              </li>
+              <li class="nav-header">LABELS</li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle text-danger" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  </svg>
+                  <p class="text">Important</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle text-warning" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  </svg>
+                  <p>Warning</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle text-info" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  </svg>
+                  <p>Informational</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- /.sidebar -->
+      </aside>
       <!-- Main content -->
       <div class="content-wrapper">
         <div class="content-header">
-          <div class="container">
+          <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
                 <div class="fs-3"><?=$this->headTitle()->renderTitle()?></div>
@@ -243,10 +364,10 @@ $this->inlineScript()
           </div>
         </div>
         <div class="content">
-          <div class="container">
+          <div class="container-fluid">
             <?=$this->content?>
 
-          </div><!-- /.container -->
+          </div><!-- /.container-fluid -->
         </div>
       </div>
       <!-- /.content-wrapper -->
