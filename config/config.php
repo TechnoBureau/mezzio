@@ -14,11 +14,12 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
+    \TechnoBureau\mezzioBlog\ConfigProvider::class,
+    \TechnoBureau\mezzioConfig\ConfigProvider::class,
     \TechnoBureau\mezzioAuth\ConfigProvider::class,
     \Mezzio\Tooling\ConfigProvider::class,
     \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
     \Laminas\I18n\ConfigProvider::class,
-    \Mezzio\ProblemDetails\ConfigProvider::class,
     \Mezzio\Csrf\ConfigProvider::class,
     \Mezzio\Flash\ConfigProvider::class,
     \Mezzio\Authorization\Acl\ConfigProvider::class,
